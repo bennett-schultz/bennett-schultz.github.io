@@ -861,7 +861,7 @@
 
     <div class="sectionTitle fadeIn d5" style="margin-top: 16px;">
       <h3>Individual Investment Research</h3>
-      <span>Single name work</span>
+      <span>PDF Downloads</span>
     </div>
 
     <div class="accordion fadeIn d5">
@@ -939,47 +939,7 @@
             <div class="statSub mono" id="totalGain">$118,000 gain</div>
           </div>
 
-          <div class="sparkWrap">
-            <div class="sparkHeader">
-              <div class="t">Portfolio curve</div>
-              <div class="v mono">Illustrative</div>
-            </div>
-
-            <svg class="spark" viewBox="0 0 600 120" preserveAspectRatio="none" aria-label="Illustrative portfolio growth chart">
-              <line class="grid" x1="0" y1="30" x2="600" y2="30"></line>
-              <line class="grid" x1="0" y1="60" x2="600" y2="60"></line>
-              <line class="grid" x1="0" y1="90" x2="600" y2="90"></line>
-
-              <path class="fill"
-                d="M0,102
-                   C45,104 70,88 95,92
-                   C120,96 140,80 165,82
-                   C190,84 210,68 235,74
-                   C260,80 278,62 305,66
-                   C332,70 350,52 375,54
-                   C400,56 418,44 445,46
-                   C472,48 490,62 515,58
-                   C540,54 565,38 600,28
-                   L600,120 L0,120 Z"></path>
-
-              <path class="line"
-                d="M0,102
-                   C45,104 70,88 95,92
-                   C120,96 140,80 165,82
-                   C190,84 210,68 235,74
-                   C260,80 278,62 305,66
-                   C332,70 350,52 375,54
-                   C400,56 418,44 445,46
-                   C472,48 490,62 515,58
-                   C540,54 565,38 600,28"></path>
-
-              <circle class="dot" cx="600" cy="28" r="4.2"></circle>
-            </svg>
-
-            <div class="note" style="margin-top:8px;">
-              Illustrative chart to communicate volatility and compounding, not a series of exact account values
-            </div>
-          </div>
+          
 
           <div class="stat">
             <div class="statTop">
@@ -1165,8 +1125,8 @@
     async function loadPrices(){
       elUpdated.textContent = "Updating prices";
 
-      if (!API_KEY || API_KEY === "PASTE_YOUR_TWELVE_DATA_KEY_HERE"){
-        elUpdated.textContent = "Add API key in script to enable live prices";
+      if (!API_KEY || API_KEY === "6294fbee3ce44814b98533d6cb9eb828"){
+        elUpdated.textContent = "";
         const fallback = investments.map(x => ({ ...x, current: null, ret: null }));
         render(fallback);
         return;
