@@ -1,2 +1,2 @@
 # bennett-schultz.github.io
-Stock pitch decks, equity reports, and other investment research
+Stock pitch decks, equity reports, financial models, and other investment research
