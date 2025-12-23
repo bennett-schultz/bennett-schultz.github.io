@@ -1,114 +1,644 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Bennett Schultz | Investment Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bennett Schultz | Portfolio</title>
 
   <style>
-    body {
-      font-family: "Times New Roman", serif;
-      margin: 48px;
-      line-height: 1.5;
-      color: #000;
+    :root{
+      --bg: #0b0f1a;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.085);
+      --border: rgba(255,255,255,0.10);
+      --border2: rgba(255,255,255,0.16);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --faint: rgba(255,255,255,0.55);
+      --accent: #7dd3fc;
+      --accent2:#a78bfa;
+      --shadow: 0 18px 45px rgba(0,0,0,0.35);
+      --shadow2: 0 10px 30px rgba(0,0,0,0.22);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 980px;
+      --ring: 0 0 0 4px rgba(125,211,252,0.18);
     }
 
-    h1 {
-      margin-bottom: 4px;
-      font-size: 28px;
+    *{ box-sizing:border-box; }
+    html, body { height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(167,139,250,0.22), transparent 55%),
+                  radial-gradient(900px 600px at 90% 20%, rgba(125,211,252,0.18), transparent 55%),
+                  radial-gradient(1200px 700px at 50% 110%, rgba(34,211,238,0.10), transparent 55%),
+                  var(--bg);
+      overflow-x:hidden;
     }
 
-    .subtitle {
-      font-size: 14px;
-      margin-top: 0;
-      margin-bottom: 28px;
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 42px 18px 70px;
+      position: relative;
     }
 
-    h2 {
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border-radius: 999px;
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(10px);
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(125,211,252,0.12);
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 12px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(10px);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: var(--border2);
+      background: rgba(255,255,255,0.085);
+      text-decoration:none;
+    }
+
+    .btn:focus-visible{ outline:none; box-shadow: var(--shadow2), var(--ring); }
+
+    header.hero{
+      padding: 28px 20px 22px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow:hidden;
+    }
+
+    header.hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(700px 240px at 10% 20%, rgba(125,211,252,0.18), transparent 60%),
+                  radial-gradient(600px 260px at 90% 10%, rgba(167,139,250,0.16), transparent 60%);
+      pointer-events:none;
+      filter: blur(2px);
+    }
+
+    .hero-inner{ position:relative; display:flex; flex-direction:column; gap:10px; }
+
+    h1{
+      margin:0;
+      font-size: 34px;
+      line-height:1.12;
+      letter-spacing: -0.02em;
+    }
+
+    .subline{
+      color: var(--muted);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      align-items:center;
+      font-size: 14.5px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.06);
+      border:1px solid var(--border);
+      color: rgba(255,255,255,0.85);
+    }
+
+    .pill svg{ opacity:.9; }
+
+    .grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      .actions{ justify-content:flex-start; }
+      h1{ font-size: 30px; }
+    }
+
+    section.card{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.055);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(10px);
+      padding: 18px 18px 16px;
+      position: relative;
+      overflow:hidden;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    section.card:hover{
+      transform: translateY(-1px);
+      border-color: var(--border2);
+      background: rgba(255,255,255,0.072);
+    }
+
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height:1.55;
+      font-size: 14.5px;
+    }
+
+    .card .small{
+      font-size: 13.5px;
+      color: var(--faint);
+    }
+
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,0.10);
+      margin: 14px 0;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top: 12px;
+    }
+
+    .chip{
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.82);
+      padding:7px 10px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .section-title{
+      margin-top: 18px;
+      margin-bottom: 10px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 12px;
+    }
+
+    .section-title h2{
+      margin:0;
       font-size: 18px;
-      margin-top: 36px;
-      margin-bottom: 12px;
+      letter-spacing: -0.01em;
     }
 
-    .card {
-      border: 1px solid #000;
-      padding: 16px;
-      margin-bottom: 16px;
+    .section-title span{
+      color: var(--faint);
+      font-size: 13px;
     }
 
-    .card-title {
-      font-weight: bold;
-      font-size: 15px;
+    .accordion{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
     }
 
-    .meta {
-      font-size: 12px;
-      margin-top: 6px;
+    details{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+      transition: border-color .18s ease, background .18s ease, transform .18s ease;
     }
 
-    a {
-      color: #000;
-      text-decoration: underline;
+    details:hover{
+      border-color: var(--border2);
+      background: rgba(255,255,255,0.068);
+      transform: translateY(-1px);
+    }
+
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      user-select:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+
+    .summary-left{
+      display:flex;
+      flex-direction:column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .summary-left strong{
+      font-size: 14.5px;
+      letter-spacing: -0.01em;
+    }
+
+    .summary-left .meta{
+      font-size: 12.5px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chev{
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      opacity:.9;
+      transition: transform .18s ease;
+    }
+
+    details[open] .chev{ transform: rotate(180deg); }
+
+    .details-body{
+      padding: 0 14px 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .linkrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+
+    .filelink{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .filelink:hover{
+      transform: translateY(-1px);
+      border-color: var(--border2);
+      background: rgba(255,255,255,0.075);
+      text-decoration:none;
+    }
+
+    .filelink:focus-visible{ outline:none; box-shadow: var(--ring); }
+
+    footer{
+      margin-top: 26px;
+      padding: 18px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 640px){
+      .contact-grid{ grid-template-columns: 1fr; }
+    }
+
+    .contact-item{
+      padding: 12px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.045);
+    }
+
+    .contact-item div{
+      color: var(--faint);
+      font-size: 12.5px;
+      margin-bottom: 4px;
+    }
+
+    .contact-item a{
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .fade-in{
+      opacity: 0;
+      transform: translateY(10px);
+      animation: in .7s ease forwards;
+    }
+    .fade-in.d2{ animation-delay: .08s; }
+    .fade-in.d3{ animation-delay: .16s; }
+    .fade-in.d4{ animation-delay: .24s; }
+    .fade-in.d5{ animation-delay: .32s; }
+
+    @keyframes in{
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .fade-in{ opacity:1; transform:none; animation:none; }
+      details:hover, section.card:hover, .btn:hover, .filelink:hover{ transform:none; }
+      .chev{ transition:none; }
     }
   </style>
 </head>
 
 <body>
+  <div class="wrap">
 
-  <h1>Bennett Schultz</h1>
-  <p class="subtitle">
-    Finance & Accounting | University of Illinois Urbana-Champaign<br>
-    Equity Research • Trading • Private Equity Interest
-  </p>
-  
-  <h2>Resume</h2>
+    <div class="topbar fade-in">
+      <div class="badge">
+        <span class="dot"></span>
+        <span style="color:var(--muted); font-size:13px;">Updated portfolio materials and research</span>
+      </div>
 
-<div class="card">
-  <strong>Resume</strong><br>
-  <a href="Bennett_Schultz_Resume.pdf" target="_blank">View Resume (PDF)</a>
-</div>
-
-  <h2>Stock Pitches & Equity Reports</h2>
-
-  <div class="card">
-    <div class="card-title">Comfort Systems USA (FIX)</div>
-    
-    <div class="meta">
-      <a href="FIX_Pitch.pdf">Pitch Deck</a> |
-      <a href="FIX_EquityReport.pdf">Equity Report</a>
+      <div class="actions">
+        <a class="btn" href="#pitches" aria-label="Jump to stock pitches">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 7h8M8 11h8M8 15h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Pitches
+        </a>
+        <a class="btn" href="Bennett_Schultz_Resume.pdf" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8M8 17h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Resume PDF
+        </a>
+        <a class="btn" href="#contact">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Contact
+        </a>
+      </div>
     </div>
-  </div>
 
-  <div class="card">
-    <div class="card-title">Hamilton Lane (HLNE)</div>
-    
-    <div class="meta">
-      <a href="HLNE_Pitch.pdf">Pitch Deck</a>
+    <header class="hero fade-in d2" id="top">
+      <div class="hero-inner">
+        <h1>Bennett Schultz <span style="color:var(--muted); font-weight:600;">Portfolio</span></h1>
+
+        <div class="subline">
+          <span class="pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 7h8M8 11h8M8 15h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Finance & Accountancy
+          </span>
+          <span class="pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Gies College of Business, University of Illinois Urbana-Champaign
+          </span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="subline">
+          <span style="color:var(--muted); font-size:14px;">
+            Thesis-driven equity research • Slide decks and equity reports • Personal investing focus
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card fade-in d3">
+        <h2>Resume</h2>
+        <p>
+          PDF resume for applications and recruiter review.
+        </p>
+        <div class="divider"></div>
+        <div class="linkrow">
+          <a class="filelink" href="Bennett_Schultz_Resume.pdf" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 12v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="m9.5 15 2.5 3 2.5-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            View Resume (PDF)
+          </a>
+        </div>
+        <p class="small" style="margin-top:10px;">
+          File name must match exactly: <span style="color:rgba(255,255,255,0.85); font-weight:600;">Bennett_Schultz_Resume.pdf</span>
+        </p>
+      </section>
+
+      <section class="card fade-in d4">
+        <h2>At a Glance</h2>
+        <p class="small">
+          From Plainfield, Illinois. Began investing early, follows markets daily, and builds research materials in free time.
+        </p>
+        <div class="chips">
+          <span class="chip">Morning market routine</span>
+          <span class="chip">Equity research decks</span>
+          <span class="chip">Catalyst-focused theses</span>
+          <span class="chip">Dirt biking</span>
+          <span class="chip">Baseball</span>
+          <span class="chip">Cars (Ferrari, Aston Martin)</span>
+        </div>
+      </section>
     </div>
-  </div>
 
-  <div class="card">
-    <div class="card-title">Meta Platforms (META)</div>
-    
-    <div class="meta">
-      <a href="META_Pitch.pdf">Pitch Deck</a>
+    <div class="section-title fade-in d4">
+      <h2>About</h2>
+      <span>Plainfield, Illinois</span>
     </div>
+
+    <section class="card fade-in d4">
+      <p>
+        Raised in Plainfield, Illinois, finance became a genuine interest early on, which led to building a personal investment portfolio as soon as it was possible.
+        Markets are followed every morning, and free time is often spent on investment research for personal positions, including building concise, professional pitch decks
+        to pressure-test convictions and communicate theses clearly.
+      </p>
+      <div class="divider"></div>
+      <p class="small">
+        Outside investing, interests include dirt biking, baseball, and cars, especially performance marques such as Ferrari and Aston Martin.
+      </p>
+    </section>
+
+    <div class="section-title fade-in d4">
+      <h2>Investment Philosophy</h2>
+      <span>Equities • Growth • Turnarounds • Catalysts</span>
+    </div>
+
+    <section class="card fade-in d4">
+      <p>
+        Equities are viewed as the strongest long-term asset class, and at this stage, the portfolio is intentionally concentrated toward them.
+        Research is centered on two primary categories: high-quality growth names and turnaround situations where catalysts are clear, understandable, and explainable to others.
+        A recurring focus is on businesses where recent pessimism appears overblown and the stock has repriced downward beyond fundamental impairment.
+        The work also looks for setups where investor sentiment can shift meaningfully due to policy, contracts, or macro positioning, particularly within space and aerospace-adjacent names.
+      </p>
+      <div class="divider"></div>
+      <p class="small">
+        Examples of researched and invested names (entry prices shown): RKLB ($5.61), AMD ($78.69), ACHR ($3.70), CELH ($23.23),
+        GOOGL ($154.30), ELF ($51.11), META ($483.51), LUNR ($5.51), ASTS ($18.84).
+      </p>
+    </section>
+
+    <div class="section-title fade-in d5" id="pitches">
+      <h2>Stock Pitches and Equity Reports</h2>
+      <span>Downloadable PDFs</span>
+    </div>
+
+    <div class="accordion fade-in d5">
+      <details>
+        <summary>
+          <div class="summary-left">
+            <strong>Comfort Systems USA (FIX)</strong>
+            <div class="meta">Pitch deck and equity report</div>
+          </div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="details-body">
+          <div class="linkrow">
+            <a class="filelink" href="FIX_Pitch.pdf" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              Pitch Deck (PDF)
+            </a>
+            <a class="filelink" href="FIX_EquityReport.pdf" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 13h8M8 17h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              Equity Report (PDF)
+            </a>
+          </div>
+          <p class="small" style="margin-top:10px;">
+            Files expected: <span style="font-weight:600; color:rgba(255,255,255,0.85);">FIX_Pitch.pdf</span> and
+            <span style="font-weight:600; color:rgba(255,255,255,0.85);">FIX_EquityReport.pdf</span>
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <strong>Hamilton Lane (HLNE)</strong>
+            <div class="meta">Pitch deck</div>
+          </div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="details-body">
+          <div class="linkrow">
+            <a class="filelink" href="HLNE_Pitch.pdf" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              Pitch Deck (PDF)
+            </a>
+          </div>
+          <p class="small" style="margin-top:10px;">
+            File expected: <span style="font-weight:600; color:rgba(255,255,255,0.85);">HLNE_Pitch.pdf</span>
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <div class="section-title fade-in d5" style="margin-top:18px;">
+      <h2>Individual Investment Research</h2>
+      <span>Single-name work</span>
+    </div>
+
+    <div class="accordion fade-in d5">
+      <details>
+        <summary>
+          <div class="summary-left">
+            <strong>Meta Platforms (META)</strong>
+            <div class="meta">Pitch deck</div>
+          </div>
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="details-body">
+          <div class="linkrow">
+            <a class="filelink" href="META_pitch.pdf" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              Pitch Deck (PDF)
+            </a>
+          </div>
+          <p class="small" style="margin-top:10px;">
+            File expected: <span style="font-weight:600; color:rgba(255,255,255,0.85);">META_pitch.pdf</span>
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <footer class="fade-in d5" id="contact">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>
+          <div style="font-weight:700; font-size:16px; letter-spacing:-0.01em;">Contact</div>
+          <div style="color:var(--muted); font-size:13px; margin-top:4px;">Reach out for internships, recruiting, or portfolio discussion</div>
+        </div>
+        <a class="btn" href="#top" style="text-decoration:none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="m5 12 7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to top
+        </a>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div>Email</div>
+          <a href="mailto:bennett.a.schultz@gmail.com">bennett.a.schultz@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <div>Phone</div>
+          <a href="tel:+18156414967">815-641-4967</a>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; color:var(--faint); font-size:12.5px;">
+        Note: Materials are for educational purposes and to demonstrate research and presentation capability.
+      </div>
+    </footer>
+
   </div>
-
-
-  <h2>About</h2>
-  <p>
-    I am a sophomore studying Finance & Accountancy at the University of Illinois with over five years of
-    experience actively trading and investing personal capital. I enjoy building investment theses,
-    creating professional pitch decks, and analyzing businesses across various sectors such as technology,
-    consumer, and aerospace.
-  </p>
-
-  <h2>Contact</h2>
-  <p>
-    Contact Info: bennett.a.schultz@gmail.com | 815-641-4967 | 26427 Silverleaf Dr. Plainfield, IL
-    
-  </p>
-
 </body>
 </html>
+
