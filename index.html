@@ -9,21 +9,29 @@
     :root{
       --bg0:#070b14;
       --bg1:#0b1224;
+
       --card:rgba(255,255,255,0.055);
-      --card2:rgba(255,255,255,0.08);
+      --card2:rgba(255,255,255,0.085);
+
       --border:rgba(255,255,255,0.10);
-      --border2:rgba(255,255,255,0.16);
+      --border2:rgba(255,255,255,0.18);
+
       --text:rgba(255,255,255,0.92);
       --muted:rgba(255,255,255,0.70);
       --faint:rgba(255,255,255,0.55);
+
       --accent:#7dd3fc;
       --accent2:#a78bfa;
+
       --good:#34d399;
       --bad:#fb7185;
+
       --shadow:0 18px 55px rgba(0,0,0,0.42);
       --shadow2:0 10px 28px rgba(0,0,0,0.26);
+
       --r1:20px;
       --r2:14px;
+
       --max:1040px;
       --ring:0 0 0 4px rgba(125,211,252,0.20);
     }
@@ -107,13 +115,13 @@
     .btn:hover{
       transform: translateY(-1px);
       border-color: var(--border2);
-      background: rgba(255,255,255,0.085);
+      background: rgba(255,255,255,0.09);
       text-decoration:none;
     }
 
     .hero{
       border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
       border-radius: var(--r1);
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
@@ -126,8 +134,8 @@
       position:absolute;
       inset:-2px;
       background:
-        radial-gradient(680px 260px at 10% 20%, rgba(125,211,252,0.18), transparent 62%),
-        radial-gradient(650px 260px at 90% 10%, rgba(167,139,250,0.15), transparent 62%);
+        radial-gradient(700px 280px at 12% 22%, rgba(125,211,252,0.18), transparent 62%),
+        radial-gradient(680px 280px at 88% 12%, rgba(167,139,250,0.15), transparent 62%);
       filter: blur(2px);
       pointer-events:none;
     }
@@ -136,8 +144,8 @@
       position:relative;
       padding: 22px 20px;
       display:grid;
-      grid-template-columns: 120px 1fr;
-      gap: 16px;
+      grid-template-columns: 170px 1fr;
+      gap: 18px;
       align-items:center;
     }
 
@@ -147,16 +155,28 @@
     }
 
     .headshot{
-      width: 108px;
-      height: 108px;
+      width: 148px;
+      height: 148px;
       border-radius: 999px;
       border: 1px solid var(--border2);
       background: rgba(255,255,255,0.06);
       overflow:hidden;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.38);
       display:flex;
       align-items:center;
       justify-content:center;
+      position: relative;
+    }
+
+    .headshot::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:999px;
+      background: linear-gradient(135deg, rgba(125,211,252,0.28), rgba(167,139,250,0.22));
+      filter: blur(10px);
+      opacity:0.55;
+      z-index:0;
     }
 
     .headshot img{
@@ -164,6 +184,8 @@
       height:100%;
       object-fit: cover;
       display:block;
+      position:relative;
+      z-index:1;
     }
 
     h1{
@@ -213,6 +235,11 @@
       padding: 16px;
     }
 
+    .cardStrong{
+      border:1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.045));
+    }
+
     .card h2{
       margin:0 0 8px;
       font-size: 16px;
@@ -236,7 +263,7 @@
     }
 
     .sectionTitle{
-      margin-top: 22px;
+      margin-top: 24px;
       margin-bottom: 10px;
       display:flex;
       align-items:flex-end;
@@ -270,12 +297,13 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,0.055);
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      font-weight: 700;
     }
 
     .filelink:hover{
       transform: translateY(-1px);
       border-color: var(--border2);
-      background: rgba(255,255,255,0.085);
+      background: rgba(255,255,255,0.09);
       text-decoration:none;
     }
 
@@ -349,7 +377,7 @@
 
     .investGrid{
       display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.35fr 0.65fr;
       gap: 14px;
     }
 
@@ -370,16 +398,16 @@
     thead th{
       text-align:left;
       font-size: 12.5px;
-      color: rgba(255,255,255,0.78);
+      color: rgba(255,255,255,0.80);
       padding: 12px 12px;
       border-bottom: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
     }
 
     tbody td{
       padding: 12px 12px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.90);
       font-size: 14px;
       vertical-align:middle;
     }
@@ -390,40 +418,53 @@
     .mono{ font-variant-numeric: tabular-nums; font-feature-settings:"tnum" 1; }
 
     .ret{
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.01em;
     }
 
     .ret.good{ color: var(--good); }
     .ret.bad{ color: var(--bad); }
 
-    .miniCard{
+    .metrics{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .metric{
+      padding: 12px;
+      border-radius: 14px;
       border:1px solid var(--border);
-      background: rgba(255,255,255,0.055);
-      border-radius: var(--r1);
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(10px);
-      padding: 16px;
+      background: rgba(255,255,255,0.05);
     }
 
-    .miniCard h3{
-      margin:0 0 8px;
-      font-size: 14.5px;
-      letter-spacing:-0.01em;
-    }
-
-    .statRow{
+    .metricTop{
       display:flex;
       justify-content:space-between;
+      align-items:flex-end;
       gap: 10px;
-      padding: 8px 0;
-      border-bottom:1px solid rgba(255,255,255,0.08);
     }
 
-    .statRow:last-child{ border-bottom:none; }
+    .metricLabel{
+      font-size: 12.5px;
+      color: var(--faint);
+    }
 
-    .statLabel{ color: var(--faint); font-size: 12.5px; }
-    .statValue{ color: rgba(255,255,255,0.88); font-size: 13.5px; }
+    .metricValue{
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+
+    .metricSub{
+      margin-top: 6px;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .metricValue.good{ color: var(--good); }
+    .metricValue.bad{ color: var(--bad); }
 
     .note{
       font-size: 12.5px;
@@ -433,7 +474,7 @@
     }
 
     footer{
-      margin-top: 20px;
+      margin-top: 22px;
       border:1px solid var(--border);
       background: rgba(255,255,255,0.05);
       border-radius: var(--r1);
@@ -468,7 +509,7 @@
 
     .contactItem a{
       color: rgba(255,255,255,0.92);
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .fadeIn{
@@ -503,8 +544,8 @@
       </div>
 
       <div class="navlinks">
-        <a class="btn" href="#investments">Investments</a>
         <a class="btn" href="#pitches">Pitches</a>
+        <a class="btn" href="#investments">Investments</a>
         <a class="btn" href="Bennett_Schultz_Resume.pdf" target="_blank" rel="noopener">Resume</a>
         <a class="btn" href="#contact">Contact</a>
       </div>
@@ -536,12 +577,12 @@
     </section>
 
     <div class="layout">
-      <section class="card fadeIn d3">
+      <section class="card cardStrong fadeIn d3">
         <h2>Resume</h2>
-        <p>PDF for applications and recruiter review.</p>
+        <p>Downloadable PDF</p>
         <div class="divider"></div>
         <div class="resumeRow">
-          <a class="filelink" href="Bennett_Schultz_Resume.pdf" target="_blank" rel="noopener">View Resume PDF</a>
+          <a class="filelink" href="Bennett_Schultz_Resume.pdf" target="_blank" rel="noopener">Preview Bennett Schultz&apos;s Resume</a>
         </div>
       </section>
 
@@ -572,71 +613,6 @@
       </p>
     </section>
 
-    <div class="sectionTitle fadeIn d5" id="investments">
-      <h2>Tracked Investments</h2>
-      <span id="lastUpdated">Live prices require an API key</span>
-    </div>
-
-    <div class="investGrid fadeIn d5">
-      <section class="card" style="padding:14px;">
-        <table aria-label="Tracked investments table">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th class="right">Entry</th>
-              <th class="right">Current</th>
-              <th class="right">Return</th>
-            </tr>
-          </thead>
-          <tbody id="invBody">
-            <tr>
-              <td colspan="4" class="muted">Loading</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="note">
-          Live pricing is pulled client side. Add an API key in the script section to enable daily updates.
-          Sorting is automatic by return with the highest returns at the top.
-        </div>
-      </section>
-
-      <section class="miniCard">
-        <h3>Live Snapshot</h3>
-
-        <div class="statRow">
-          <div class="statLabel">Source</div>
-          <div class="statValue" id="sourceName">Not configured</div>
-        </div>
-
-        <div class="statRow">
-          <div class="statLabel">Tickers tracked</div>
-          <div class="statValue" id="tickersCount" class="mono">0</div>
-        </div>
-
-        <div class="statRow">
-          <div class="statLabel">Top return</div>
-          <div class="statValue" id="topReturn">N A</div>
-        </div>
-
-        <div class="statRow">
-          <div class="statLabel">Lowest return</div>
-          <div class="statValue" id="lowReturn">N A</div>
-        </div>
-
-        <div class="statRow">
-          <div class="statLabel">Refresh</div>
-          <div class="statValue">
-            <button class="btn" id="refreshBtn" style="padding:8px 10px;">Refresh prices</button>
-          </div>
-        </div>
-
-        <div class="note">
-          If live pricing is not enabled, current prices will show as em dash and returns will not calculate.
-        </div>
-      </section>
-    </div>
-
     <div class="sectionTitle fadeIn d5" id="pitches">
       <h2>Stock Pitches and Equity Reports</h2>
       <span>PDF downloads</span>
@@ -649,7 +625,9 @@
             <strong>Comfort Systems USA (FIX)</strong>
             <div class="meta">Pitch deck and equity report</div>
           </div>
-          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </summary>
         <div class="detailsBody">
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -665,7 +643,9 @@
             <strong>Hamilton Lane (HLNE)</strong>
             <div class="meta">Pitch deck</div>
           </div>
-          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </summary>
         <div class="detailsBody">
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -687,7 +667,9 @@
             <strong>Meta Platforms (META)</strong>
             <div class="meta">Pitch deck</div>
           </div>
-          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="chev" viewBox="0 0 24 24" fill="none">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </summary>
         <div class="detailsBody">
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -697,10 +679,83 @@
       </details>
     </div>
 
+    <div class="sectionTitle fadeIn d5" id="investments">
+      <h2>Tracked Investments</h2>
+      <span id="lastUpdated">Updating prices</span>
+    </div>
+
+    <div class="investGrid fadeIn d5">
+      <section class="card" style="padding:14px;">
+        <table aria-label="Tracked investments table">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th class="right">Entry</th>
+              <th class="right">Current</th>
+              <th class="right">Return</th>
+            </tr>
+          </thead>
+          <tbody id="invBody">
+            <tr>
+              <td colspan="4" class="muted">Loading</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="note">
+          Prices update on load and when refreshed. Table sorts by return with the highest returns at the top.
+        </div>
+      </section>
+
+      <section class="card cardStrong">
+        <h2 style="margin-bottom:10px;">Portfolio Growth</h2>
+
+        <div class="metrics">
+          <div class="metric">
+            <div class="metricTop">
+              <div class="metricLabel">Starting capital</div>
+              <div class="metricValue mono" id="startCapital">$12,000</div>
+            </div>
+            <div class="metricSub">Approximate starting portfolio size</div>
+          </div>
+
+          <div class="metric">
+            <div class="metricTop">
+              <div class="metricLabel">Current value</div>
+              <div class="metricValue mono" id="currentValue">$130,000</div>
+            </div>
+            <div class="metricSub">Approximate current portfolio size</div>
+          </div>
+
+          <div class="metric">
+            <div class="metricTop">
+              <div class="metricLabel">Total return</div>
+              <div class="metricValue good mono" id="totalReturnPct">+983.3%</div>
+            </div>
+            <div class="metricSub mono" id="totalGain">$118,000 gain</div>
+          </div>
+
+          <div class="metric">
+            <div class="metricTop">
+              <div class="metricLabel">Refresh prices</div>
+              <div>
+                <button class="btn" id="refreshBtn" style="padding:8px 10px;">Refresh prices</button>
+              </div>
+            </div>
+            <div class="metricSub">Uses your Twelve Data API key already in the script</div>
+          </div>
+        </div>
+
+        <div class="note">
+          Figures above are approximate and intended to communicate scale and growth.
+        </div>
+      </section>
+    </div>
+
     <footer class="fadeIn d5" id="contact">
       <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
         <div>
-          <div style="font-weight:800; font-size:16px; letter-spacing:-0.01em;">Contact</div>
+          <div style="font-weight:900; font-size:16px; letter-spacing:-0.01em;">Contact</div>
           <div class="muted" style="font-size:13px; margin-top:4px;">Email or call</div>
         </div>
         <a class="btn" href="#top">Back to top</a>
@@ -725,20 +780,7 @@
   </div>
 
   <script>
-    /*
-      Live price updates
-      This needs a free API key from Twelve Data
-      Steps
-      1 Create an account at Twelve Data
-      2 Get an API key
-      3 Paste it into API_KEY below
-      This page then fetches current prices on load and on refresh
-
-      If no API key is added, the table still renders but current prices and returns will show as em dash
-    */
-
-    const PRICE_PROVIDER = "twelvedata";
-    const API_KEY = "6294fbee3ce44814b98533d6cb9eb828"; // paste your Twelve Data key here
+    const API_KEY = "6294fbee3ce44814b98533d6cb9eb828";
 
     const investments = [
       { symbol:"RKLB", name:"Rocket Lab", entry:5.61 },
@@ -754,16 +796,22 @@
 
     const elBody = document.getElementById("invBody");
     const elUpdated = document.getElementById("lastUpdated");
-    const elSource = document.getElementById("sourceName");
-    const elCount = document.getElementById("tickersCount");
-    const elTop = document.getElementById("topReturn");
-    const elLow = document.getElementById("lowReturn");
     const refreshBtn = document.getElementById("refreshBtn");
 
-    elCount.textContent = String(investments.length);
-    elSource.textContent = API_KEY ? "Twelve Data" : "Not configured";
+    const startCapital = 12000;
+    const currentValue = 130000;
 
-    function fmtMoney(x){
+    const elStart = document.getElementById("startCapital");
+    const elCurr = document.getElementById("currentValue");
+    const elTotPct = document.getElementById("totalReturnPct");
+    const elTotGain = document.getElementById("totalGain");
+
+    function fmtMoney0(x){
+      const v = Math.round(Number(x));
+      return "$" + v.toLocaleString();
+    }
+
+    function fmtMoney2(x){
       if (x === null || x === undefined) return "—";
       return "$" + Number(x).toFixed(2);
     }
@@ -774,40 +822,38 @@
       return sign + x.toFixed(1) + "%";
     }
 
+    function setPortfolioGrowth(){
+      elStart.textContent = fmtMoney0(startCapital);
+      elCurr.textContent = fmtMoney0(currentValue);
+
+      const gain = currentValue - startCapital;
+      const pct = (gain / startCapital) * 100;
+
+      elTotPct.textContent = fmtPct(pct);
+      elTotPct.classList.toggle("good", pct >= 0);
+      elTotPct.classList.toggle("bad", pct < 0);
+
+      elTotGain.textContent = fmtMoney0(gain) + " gain";
+    }
+
     function rowHTML(item){
       const ret = item.ret;
       const retClass = ret === null ? "" : (ret >= 0 ? "good" : "bad");
       return `
         <tr>
           <td>
-            <div style="font-weight:750;">${item.symbol}</div>
+            <div style="font-weight:850;">${item.symbol}</div>
             <div style="font-size:12.5px; color: rgba(255,255,255,0.65); margin-top:2px;">${item.name}</div>
           </td>
-          <td class="right mono">${fmtMoney(item.entry)}</td>
-          <td class="right mono">${fmtMoney(item.current)}</td>
+          <td class="right mono">${fmtMoney2(item.entry)}</td>
+          <td class="right mono">${fmtMoney2(item.current)}</td>
           <td class="right mono ret ${retClass}">${fmtPct(ret)}</td>
         </tr>
       `;
     }
 
-    function updateSnapshot(list){
-      const returns = list.map(x => x.ret).filter(x => x !== null && x !== undefined);
-      if (!returns.length){
-        elTop.textContent = "N A";
-        elLow.textContent = "N A";
-        return;
-      }
-      const top = Math.max(...returns);
-      const low = Math.min(...returns);
-      elTop.textContent = fmtPct(top);
-      elTop.style.color = top >= 0 ? "var(--good)" : "var(--bad)";
-      elLow.textContent = fmtPct(low);
-      elLow.style.color = low >= 0 ? "var(--good)" : "var(--bad)";
-    }
-
     function render(list){
       elBody.innerHTML = list.map(rowHTML).join("");
-      updateSnapshot(list);
     }
 
     function computeReturns(list){
@@ -836,16 +882,9 @@
     }
 
     async function loadPrices(){
-      const base = investments.map(x => ({ ...x, current: null, ret: null }));
-      if (!API_KEY){
-        elUpdated.textContent = "Live prices require an API key";
-        render(base);
-        return;
-      }
-
       elUpdated.textContent = "Updating prices";
-      const updated = [];
 
+      const updated = [];
       for (const item of investments){
         try{
           const p = await fetchPriceTwelveData(item.symbol);
@@ -866,9 +905,12 @@
     }
 
     refreshBtn.addEventListener("click", loadPrices);
+
+    setPortfolioGrowth();
     loadPrices();
   </script>
 </body>
 </html>
+
 
 
