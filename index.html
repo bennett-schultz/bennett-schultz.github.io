@@ -11,8 +11,6 @@
       --bg1:#0b1224;
 
       --card:rgba(255,255,255,0.055);
-      --card2:rgba(255,255,255,0.085);
-
       --border:rgba(255,255,255,0.10);
       --border2:rgba(255,255,255,0.18);
 
@@ -38,879 +36,215 @@
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
-        radial-gradient(1100px 650px at 18% 8%, rgba(167,139,250,0.18), transparent 58%),
-        radial-gradient(1000px 600px at 88% 14%, rgba(125,211,252,0.15), transparent 58%),
-        radial-gradient(1100px 650px at 50% 115%, rgba(34,211,238,0.10), transparent 60%),
+        radial-gradient(1200px 700px at 15% 0%, rgba(167,139,250,0.14), transparent 65%),
+        radial-gradient(1200px 700px at 85% 10%, rgba(125,211,252,0.12), transparent 65%),
+        radial-gradient(1200px 700px at 50% 110%, rgba(34,211,238,0.10), transparent 70%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
       overflow-x:hidden;
     }
 
-    a{ color:inherit; text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-    a:focus-visible{ outline:none; box-shadow: var(--ring); border-radius: 10px; }
-
-    .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 34px 18px 72px;
-    }
-
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap: 2px;
-      min-width: 0;
-    }
-
-    .brand strong{
-      font-size: 14px;
-      letter-spacing: 0.02em;
-      color: rgba(255,255,255,0.88);
-    }
-
-    .brand span{
-      font-size: 12.5px;
-      color: var(--faint);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 58vw;
-    }
-
-    .navlinks{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(10px);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-      cursor:pointer;
-      user-select:none;
-    }
-
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: var(--border2);
-      background: rgba(255,255,255,0.09);
-      text-decoration:none;
-    }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:34px 18px 72px; }
 
     .hero{
       border:1px solid var(--border);
       background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
-      border-radius: var(--r1);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      overflow:hidden;
-      position:relative;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(700px 280px at 12% 22%, rgba(125,211,252,0.18), transparent 62%),
-        radial-gradient(680px 280px at 88% 12%, rgba(167,139,250,0.15), transparent 62%);
-      filter: blur(2px);
-      pointer-events:none;
+      border-radius:var(--r1);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
     }
 
     .heroInner{
-      position:relative;
-      padding: 22px 20px;
+      padding:24px;
       display:grid;
-      grid-template-columns: 170px 1fr;
-      gap: 36px;
+      grid-template-columns:190px 1fr;
+      gap:36px;
       align-items:center;
-    }
-
-    @media (max-width: 760px){
-      .heroInner{ grid-template-columns: 1fr; }
-      .nav{ align-items:flex-start; }
     }
 
     .headshot{
-      width: 190px;
-      height: 190px;
-      border-radius: 999px;
-      border: 1px solid var(--border2);
-      background: rgba(255,255,255,0.06);
-      overflow:hidden;
-      box-shadow: 0 16px 44px rgba(0,0,0,0.38);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position: relative;
-    }
-
-    .headshot::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
+      width:200px;
+      height:200px;
       border-radius:999px;
-      background: linear-gradient(135deg, rgba(125,211,252,0.28), rgba(167,139,250,0.22));
-      filter: blur(10px);
-      opacity:0.55;
-      z-index:0;
+      border:1px solid var(--border2);
+      overflow:hidden;
+      box-shadow:0 16px 44px rgba(0,0,0,0.38);
     }
 
     .headshot img{
       width:120%;
       height:120%;
-      object-fit: cover;
-      display:block;
-      position:relative;
-      z-index:1;
+      object-fit:cover;
     }
 
-    h1{
-      margin:0;
-      font-size: 34px;
-      letter-spacing:-0.02em;
-      line-height:1.12;
-    }
-
-    .subline{
-      margin-top: 10px;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px 12px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    h1{ margin:0; font-size:34px; letter-spacing:-0.02em; }
 
     .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.82);
-    }
-
-    .layout{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    @media (max-width: 900px){
-      .layout{ grid-template-columns: 1fr; }
-    }
-
-    .card{
+      display:inline-block;
+      margin-right:8px;
+      margin-top:10px;
+      padding:7px 12px;
+      border-radius:999px;
       border:1px solid var(--border);
-      background: rgba(255,255,255,0.055);
-      border-radius: var(--r1);
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(10px);
-      padding: 16px;
-    }
-
-    .cardStrong{
-      border:1px solid rgba(255,255,255,0.14);
-      background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.045));
-    }
-
-    .card h2{
-      margin:0 0 8px;
-      font-size: 16px;
-      letter-spacing:-0.01em;
-    }
-
-    .card p{
-      margin:0;
-      color: var(--muted);
-      line-height:1.55;
-      font-size: 14.5px;
-    }
-
-    .muted{ color: var(--muted); }
-    .faint{ color: var(--faint); }
-
-    .divider{
-      height:1px;
-      background: rgba(255,255,255,0.10);
-      margin: 12px 0;
+      background:rgba(255,255,255,0.06);
+      font-size:14px;
     }
 
     .sectionTitle{
-      margin-top: 24px;
-      margin-bottom: 10px;
+      margin-top:26px;
+      margin-bottom:10px;
       display:flex;
+      justify-content:space-between;
       align-items:flex-end;
-      justify-content:space-between;
-      gap: 12px;
     }
 
-    .sectionTitle h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:-0.01em;
-    }
+    .sectionTitle h2{ margin:0; font-size:18px; }
 
-    .sectionTitle span{
-      font-size: 12.5px;
-      color: var(--faint);
-    }
-
-    .resumeRow{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-    }
-
-    .filelink{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.055);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-      font-weight: 700;
-    }
-
-    .filelink:hover{
-      transform: translateY(-1px);
-      border-color: var(--border2);
-      background: rgba(255,255,255,0.09);
-      text-decoration:none;
-    }
-
-    details{
+    .card{
       border:1px solid var(--border);
-      background: rgba(255,255,255,0.05);
-      border-radius: var(--r2);
-      overflow:hidden;
-      box-shadow: var(--shadow2);
-      transition: border-color .18s ease, background .18s ease;
+      background:rgba(255,255,255,0.055);
+      border-radius:var(--r1);
+      box-shadow:var(--shadow2);
+      padding:16px;
     }
 
-    details:hover{
-      border-color: var(--border2);
-      background: rgba(255,255,255,0.07);
-    }
-
-    summary{
-      list-style:none;
-      cursor:pointer;
-      padding: 14px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      user-select:none;
-    }
-    summary::-webkit-details-marker{ display:none; }
-
-    .sumLeft{
-      display:flex;
-      flex-direction:column;
-      gap: 3px;
-      min-width: 0;
-    }
-
-    .sumLeft strong{
-      font-size: 14.5px;
-      letter-spacing:-0.01em;
-    }
-
-    .sumLeft .meta{
-      font-size: 12.5px;
-      color: var(--muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .chev{
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-      opacity:.9;
-      transition: transform .18s ease;
-    }
-
-    details[open] .chev{ transform: rotate(180deg); }
-
-    .detailsBody{
-      padding: 0 14px 14px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .accordion{
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-
-    .investGrid{
+    .layout{
+      margin-top:16px;
       display:grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 14px;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
     }
 
-    @media (max-width: 980px){
-      .investGrid{ grid-template-columns: 1fr; }
+    @media(max-width:900px){
+      .layout{ grid-template-columns:1fr; }
+      .heroInner{ grid-template-columns:1fr; }
     }
 
-    table{
+    /* Portfolio growth chart */
+    .sparkWrap{
+      margin-top:14px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.04);
+    }
+
+    .sparkHeader{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:6px;
+      font-size:12.5px;
+      color:var(--faint);
+    }
+
+    svg.spark{
       width:100%;
-      border-collapse:separate;
-      border-spacing:0;
-      overflow:hidden;
-      border-radius: 14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,0.04);
+      height:120px;
     }
 
-    thead th{
-      text-align:left;
-      font-size: 12.5px;
-      color: rgba(255,255,255,0.80);
-      padding: 12px 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.05);
+    .spark path.line{
+      stroke:var(--good);
+      stroke-width:2.6;
+      fill:none;
     }
 
-    tbody td{
-      padding: 12px 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.90);
-      font-size: 14px;
-      vertical-align:middle;
+    .spark path.fill{
+      fill:rgba(52,211,153,0.12);
     }
 
-    tbody tr:last-child td{ border-bottom:none; }
-
-    .right{ text-align:right; }
-    .mono{ font-variant-numeric: tabular-nums; font-feature-settings:"tnum" 1; }
-
-    .ret{
-      font-weight: 900;
-      letter-spacing: 0.01em;
-    }
-
-    .ret.good{ color: var(--good); }
-    .ret.bad{ color: var(--bad); }
-
-    .metrics{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .metric{
-      padding: 12px;
-      border-radius: 14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,0.05);
-    }
-
-    .metricTop{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap: 10px;
-    }
-
-    .metricLabel{
-      font-size: 12.5px;
-      color: var(--faint);
-    }
-
-    .metricValue{
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -0.01em;
-    }
-
-    .metricSub{
-      margin-top: 6px;
-      font-size: 12.5px;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .metricValue.good{ color: var(--good); }
-    .metricValue.bad{ color: var(--bad); }
-
-    .note{
-      font-size: 12.5px;
-      color: var(--faint);
-      line-height: 1.45;
-      margin-top: 10px;
-    }
-
-    footer{
-      margin-top: 22px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,0.05);
-      border-radius: var(--r1);
-      box-shadow: var(--shadow2);
-      backdrop-filter: blur(10px);
-      padding: 16px;
-    }
-
-    .contactGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 650px){
-      .contactGrid{ grid-template-columns: 1fr; }
-    }
-
-    .contactItem{
-      padding: 12px;
-      border-radius: 14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,0.045);
-    }
-
-    .contactItem div{
-      color: var(--faint);
-      font-size: 12.5px;
-      margin-bottom: 4px;
-    }
-
-    .contactItem a{
-      color: rgba(255,255,255,0.92);
-      font-weight: 800;
-    }
-
-    .fadeIn{
-      opacity: 0;
-      transform: translateY(10px);
-      animation: in .65s ease forwards;
-    }
-    .d2{ animation-delay:.08s; }
-    .d3{ animation-delay:.16s; }
-    .d4{ animation-delay:.24s; }
-    .d5{ animation-delay:.32s; }
-
-    @keyframes in{
-      to{ opacity:1; transform: translateY(0); }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      .fadeIn{ opacity:1; transform:none; animation:none; }
-      .btn:hover, .filelink:hover{ transform:none; }
-      .chev{ transition:none; }
+    .spark .dot{
+      fill:var(--good);
+      stroke:#fff;
+      stroke-width:1;
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+<div class="wrap">
 
-    <div class="nav fadeIn">
-      <div class="brand">
-        <strong>Bennett Schultz</strong>
-        <span>Finance and Accountancy | Gies College of Business | UIUC</span>
+  <section class="hero">
+    <div class="heroInner">
+      <div class="headshot">
+        <img src="Bennett_Schultz_Headshot.jpg" alt="Bennett Schultz headshot">
       </div>
-
-      <div class="navlinks">
-        <a class="btn" href="#pitches">Pitches</a>
-        <a class="btn" href="#investments">Investments</a>
-        <a class="btn" href="Bennett_Schultz_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a class="btn" href="#contact">Contact</a>
-      </div>
-    </div>
-
-    <section class="hero fadeIn d2" id="top">
-      <div class="heroInner">
-        <div class="headshot">
-          <img src="Bennett_Schultz_Headshot.jpg" alt="Bennett Schultz headshot" />
-        </div>
-
+      <div>
+        <h1>Bennett Schultz <span style="color:var(--muted); font-weight:600;">Portfolio</span></h1>
         <div>
-          <h1>Bennett Schultz <span style="color:var(--muted); font-weight:650;">Portfolio</span></h1>
-
-          <div class="subline">
-            <span class="pill">Finance and Accountancy</span>
-            <span class="pill">Gies College of Business, University of Illinois Urbana Champaign</span>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="subline">
-            <span class="muted">
-              Thesis driven equity research, investor style decks, and personal portfolio analysis
-            </span>
-          </div>
+          <span class="pill">Finance & Accountancy</span>
+          <span class="pill">Gies College of Business, UIUC</span>
         </div>
-      </div>
-    </section>
-
-    <div class="layout">
-      <section class="card cardStrong fadeIn d3">
-        <h2>Resume</h2>
-        <p>Downloadable PDF</p>
-        <div class="divider"></div>
-        <div class="resumeRow">
-          <a class="filelink" href="Bennett_Schultz_Resume.pdf" target="_blank" rel="noopener">Preview Bennett Schultz&apos;s Resume</a>
-        </div>
-      </section>
-
-      <section class="card fadeIn d4">
-        <h2>About</h2>
-        <p>
-          From Plainfield, Illinois. Developed an early interest in finance and started a personal investment portfolio as soon as it was possible.
-          Follows markets each morning and builds research in free time to support personal positions, focusing on clear catalysts and explainable theses.
+        <p class="muted" style="margin-top:14px;">
+          Thesis driven equity research, investor style decks, and personal portfolio analysis
         </p>
-        <div class="divider"></div>
-        <p class="faint">
-          Interests include dirt biking, baseball, and cars, especially Ferrari and Aston Martin.
-        </p>
-      </section>
-    </div>
-
-    <div class="sectionTitle fadeIn d4">
-      <h2>Investment Philosophy</h2>
-      <span>Equities | Growth | Turnarounds | Catalysts</span>
-    </div>
-
-    <section class="card fadeIn d4">
-      <p>
-        Equities are treated as the strongest long term compounding vehicle, and the portfolio is intentionally weighted toward them at this stage.
-        Research centers on two categories: high quality growth names and turnaround situations where catalysts are clear, understandable, and communicable.
-        A repeated focus is on businesses where near term pessimism appears overextended and price action reflects more fear than fundamental impairment.
-        Special attention is paid to sentiment inflection setups tied to policy, contracts, and macro positioning, particularly across aerospace and space adjacent names.
-      </p>
-    </section>
-
-    <div class="sectionTitle fadeIn d5" id="pitches">
-      <h2>Stock Pitches and Equity Reports</h2>
-      <span>PDF downloads</span>
-    </div>
-
-    <div class="accordion fadeIn d5">
-      <details>
-        <summary>
-          <div class="sumLeft">
-            <strong>Comfort Systems USA (FIX)</strong>
-            <div class="meta">Pitch deck and equity report</div>
-          </div>
-          <svg class="chev" viewBox="0 0 24 24" fill="none">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </summary>
-        <div class="detailsBody">
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="filelink" href="FIX_Pitch.pdf" target="_blank" rel="noopener">Pitch Deck</a>
-            <a class="filelink" href="FIX_EquityReport.pdf" target="_blank" rel="noopener">Equity Report</a>
-          </div>
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          <div class="sumLeft">
-            <strong>Hamilton Lane (HLNE)</strong>
-            <div class="meta">Pitch deck</div>
-          </div>
-          <svg class="chev" viewBox="0 0 24 24" fill="none">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </summary>
-        <div class="detailsBody">
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="filelink" href="HLNE_Pitch.pdf" target="_blank" rel="noopener">Pitch Deck</a>
-          </div>
-        </div>
-      </details>
-    </div>
-
-    <div class="sectionTitle fadeIn d5" style="margin-top:18px;">
-      <h2>Individual Investment Research</h2>
-      <span>Single name work</span>
-    </div>
-
-    <div class="accordion fadeIn d5">
-      <details>
-        <summary>
-          <div class="sumLeft">
-            <strong>Meta Platforms (META)</strong>
-            <div class="meta">Pitch deck</div>
-          </div>
-          <svg class="chev" viewBox="0 0 24 24" fill="none">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </summary>
-        <div class="detailsBody">
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="filelink" href="META_pitch.pdf" target="_blank" rel="noopener">Pitch Deck</a>
-          </div>
-        </div>
-      </details>
-    </div>
-
-    <div class="sectionTitle fadeIn d5" id="investments">
-      <h2>Tracked Investments</h2>
-      <span id="lastUpdated">Updating prices</span>
-    </div>
-
-    <div class="investGrid fadeIn d5">
-      <section class="card" style="padding:14px;">
-        <table aria-label="Tracked investments table">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th class="right">Entry</th>
-              <th class="right">Current</th>
-              <th class="right">Return</th>
-            </tr>
-          </thead>
-          <tbody id="invBody">
-            <tr>
-              <td colspan="4" class="muted">Loading</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="note">
-          Prices update on load and when refreshed. Table sorts by return with the highest returns at the top.
-        </div>
-      </section>
-
-      <section class="card cardStrong">
-        <h2 style="margin-bottom:10px;">Portfolio Growth</h2>
-
-        <div class="metrics">
-          <div class="metric">
-            <div class="metricTop">
-              <div class="metricLabel">Starting capital</div>
-              <div class="metricValue mono" id="startCapital">$12,000</div>
-            </div>
-            <div class="metricSub">Approximate starting portfolio size</div>
-          </div>
-
-          <div class="metric">
-            <div class="metricTop">
-              <div class="metricLabel">Current value</div>
-              <div class="metricValue mono" id="currentValue">$130,000</div>
-            </div>
-            <div class="metricSub">Approximate current portfolio size</div>
-          </div>
-
-          <div class="metric">
-            <div class="metricTop">
-              <div class="metricLabel">Total return</div>
-              <div class="metricValue good mono" id="totalReturnPct">+983.3%</div>
-            </div>
-            <div class="metricSub mono" id="totalGain">$118,000 gain</div>
-          </div>
-
-          <div class="metric">
-            <div class="metricTop">
-              <div class="metricLabel">Refresh prices</div>
-              <div>
-                <button class="btn" id="refreshBtn" style="padding:8px 10px;">Refresh prices</button>
-              </div>
-            </div>
-            <div class="metricSub">Uses your Twelve Data API key already in the script</div>
-          </div>
-        </div>
-
-        <div class="note">
-          Figures above are approximate and intended to communicate scale and growth.
-        </div>
-      </section>
-    </div>
-
-    <footer class="fadeIn d5" id="contact">
-      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-        <div>
-          <div style="font-weight:900; font-size:16px; letter-spacing:-0.01em;">Contact</div>
-          <div class="muted" style="font-size:13px; margin-top:4px;">Email or call</div>
-        </div>
-        <a class="btn" href="#top">Back to top</a>
       </div>
+    </div>
+  </section>
 
-      <div class="contactGrid">
-        <div class="contactItem">
-          <div>Email</div>
-          <a href="mailto:bennett.a.schultz@gmail.com">bennett.a.schultz@gmail.com</a>
-        </div>
-        <div class="contactItem">
-          <div>Phone</div>
-          <a href="tel:+18156414967">815 641 4967</a>
-        </div>
-      </div>
-
-      <div class="note">
-        Materials are for educational purposes and demonstrate research and presentation capability.
-      </div>
-    </footer>
-
+  <div class="sectionTitle">
+    <h2>Portfolio Growth</h2>
+    <span class="faint">Illustrative performance</span>
   </div>
 
-  <script>
-    const API_KEY = "6294fbee3ce44814b98533d6cb9eb828";
+  <section class="card">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+      <div>
+        <div class="muted">Starting capital</div>
+        <div style="font-size:20px; font-weight:900;">$12,000</div>
+      </div>
+      <div>
+        <div class="muted">Current value</div>
+        <div style="font-size:20px; font-weight:900;">$130,000</div>
+      </div>
+    </div>
 
-    const investments = [
-      { symbol:"RKLB", name:"Rocket Lab", entry:5.61 },
-      { symbol:"AMD",  name:"Advanced Micro Devices", entry:78.69 },
-      { symbol:"ACHR", name:"Archer Aviation", entry:3.70 },
-      { symbol:"CELH", name:"Celsius", entry:23.23 },
-      { symbol:"GOOGL",name:"Alphabet", entry:154.30 },
-      { symbol:"ELF",  name:"e l f Beauty", entry:51.11 },
-      { symbol:"META", name:"Meta Platforms", entry:483.51 },
-      { symbol:"LUNR", name:"Intuitive Machines", entry:5.51 },
-      { symbol:"ASTS", name:"AST SpaceMobile", entry:18.84 }
-    ];
+    <div style="margin-top:10px;">
+      <div class="muted">Total return</div>
+      <div style="font-size:22px; font-weight:900; color:var(--good);">+983.3%</div>
+    </div>
 
-    const elBody = document.getElementById("invBody");
-    const elUpdated = document.getElementById("lastUpdated");
-    const refreshBtn = document.getElementById("refreshBtn");
+    <div class="sparkWrap">
+      <div class="sparkHeader">
+        <span>Growth with volatility</span>
+        <span>Long term compounding</span>
+      </div>
 
-    const startCapital = 12000;
-    const currentValue = 130000;
+      <svg class="spark" viewBox="0 0 600 120" preserveAspectRatio="none">
+        <path class="fill"
+          d="M0,100
+             C60,105 90,80 120,85
+             C150,90 180,70 210,75
+             C240,80 270,55 300,60
+             C330,65 360,40 390,45
+             C420,50 450,35 480,38
+             C510,40 540,30 600,22
+             L600,120 L0,120 Z"/>
+        <path class="line"
+          d="M0,100
+             C60,105 90,80 120,85
+             C150,90 180,70 210,75
+             C240,80 270,55 300,60
+             C330,65 360,40 390,45
+             C420,50 450,35 480,38
+             C510,40 540,30 600,22"/>
+        <circle class="dot" cx="600" cy="22" r="4"/>
+      </svg>
 
-    const elStart = document.getElementById("startCapital");
-    const elCurr = document.getElementById("currentValue");
-    const elTotPct = document.getElementById("totalReturnPct");
-    const elTotGain = document.getElementById("totalGain");
+      <div class="faint" style="margin-top:6px;">
+        Illustrative chart showing drawdowns and long term growth
+      </div>
+    </div>
+  </section>
 
-    function fmtMoney0(x){
-      const v = Math.round(Number(x));
-      return "$" + v.toLocaleString();
-    }
-
-    function fmtMoney2(x){
-      if (x === null || x === undefined) return "—";
-      return "$" + Number(x).toFixed(2);
-    }
-
-    function fmtPct(x){
-      if (x === null || x === undefined) return "—";
-      const sign = x >= 0 ? "+" : "";
-      return sign + x.toFixed(1) + "%";
-    }
-
-    function setPortfolioGrowth(){
-      elStart.textContent = fmtMoney0(startCapital);
-      elCurr.textContent = fmtMoney0(currentValue);
-
-      const gain = currentValue - startCapital;
-      const pct = (gain / startCapital) * 100;
-
-      elTotPct.textContent = fmtPct(pct);
-      elTotPct.classList.toggle("good", pct >= 0);
-      elTotPct.classList.toggle("bad", pct < 0);
-
-      elTotGain.textContent = fmtMoney0(gain) + " gain";
-    }
-
-    function rowHTML(item){
-      const ret = item.ret;
-      const retClass = ret === null ? "" : (ret >= 0 ? "good" : "bad");
-      return `
-        <tr>
-          <td>
-            <div style="font-weight:850;">${item.symbol}</div>
-            <div style="font-size:12.5px; color: rgba(255,255,255,0.65); margin-top:2px;">${item.name}</div>
-          </td>
-          <td class="right mono">${fmtMoney2(item.entry)}</td>
-          <td class="right mono">${fmtMoney2(item.current)}</td>
-          <td class="right mono ret ${retClass}">${fmtPct(ret)}</td>
-        </tr>
-      `;
-    }
-
-    function render(list){
-      elBody.innerHTML = list.map(rowHTML).join("");
-    }
-
-    function computeReturns(list){
-      return list.map(x => {
-        const current = x.current;
-        const ret = (current && x.entry) ? ((current - x.entry) / x.entry) * 100 : null;
-        return { ...x, ret };
-      });
-    }
-
-    function sortByReturn(list){
-      return [...list].sort((a,b) => {
-        const ar = (a.ret === null || a.ret === undefined) ? -Infinity : a.ret;
-        const br = (b.ret === null || b.ret === undefined) ? -Infinity : b.ret;
-        return br - ar;
-      });
-    }
-
-    async function fetchPriceTwelveData(symbol){
-      const url = `https://api.twelvedata.com/price?symbol=${encodeURIComponent(symbol)}&apikey=${encodeURIComponent(API_KEY)}`;
-      const res = await fetch(url, { cache:"no-store" });
-      const data = await res.json();
-      if (!data || !data.price) return null;
-      const p = Number(data.price);
-      return Number.isFinite(p) ? p : null;
-    }
-
-    async function loadPrices(){
-      elUpdated.textContent = "Updating prices";
-
-      const updated = [];
-      for (const item of investments){
-        try{
-          const p = await fetchPriceTwelveData(item.symbol);
-          updated.push({ ...item, current: p });
-        }catch(e){
-          updated.push({ ...item, current: null });
-        }
-      }
-
-      const withRets = computeReturns(updated);
-      const sorted = sortByReturn(withRets);
-
-      const now = new Date();
-      const stamp = now.toLocaleString(undefined, { year:"numeric", month:"short", day:"2-digit", hour:"2-digit", minute:"2-digit" });
-      elUpdated.textContent = `Last updated ${stamp}`;
-
-      render(sorted);
-    }
-
-    refreshBtn.addEventListener("click", loadPrices);
-
-    setPortfolioGrowth();
-    loadPrices();
-  </script>
+</div>
 </body>
 </html>
+
 
 
 
